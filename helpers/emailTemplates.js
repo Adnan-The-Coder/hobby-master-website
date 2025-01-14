@@ -19,7 +19,7 @@ export const VERIFICATION_EMAIL_TEMPLATE = `
     <p>Enter this code on the verification page to complete your registration.</p>
     <p>This code will expire in 15 minutes for security reasons.</p>
     <p>If you didn't create an account with us, please ignore this email.</p>
-    <p>Best regards,<br>Electroplix</p>
+    <p>Best regards,<br>Hobby Master</p>
   </div>
   <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8em;">
     <p>This is an automated message, please do not reply to this email.</p>
@@ -56,7 +56,7 @@ export const PASSWORD_RESET_SUCCESS_TEMPLATE = `
       <li>Avoid using the same password across multiple sites</li>
     </ul>
     <p>Thank you for helping us keep your account secure.</p>
-    <p>Best regards,<br>Electroplix</p>
+    <p>Best regards,<br>Hobby Master</p>
   </div>
   <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8em;">
     <p>This is an automated message, please do not reply to this email.</p>
@@ -85,7 +85,7 @@ export const PASSWORD_RESET_REQUEST_TEMPLATE = `
       <a href="{resetURL}" style="background-color: #4CAF50; color: white; padding: 12px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Reset Password</a>
     </div>
     <p>This link will expire in 1 hour for security reasons.</p>
-    <p>Best regards,<br>Electroplix</p>
+    <p>Best regards,<br>Hobby Master</p>
   </div>
   <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8em;">
     <p>This is an automated message, please do not reply to this email.</p>
@@ -101,7 +101,7 @@ export const WELCOME_EMAIL_TEMPLATE = `
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Electroplix</title>
+    <title>Welcome to Hobby Master</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -192,27 +192,28 @@ export const WELCOME_EMAIL_TEMPLATE = `
         <img src="https://mailsend-email-assets.mailtrap.io/54mrbgbp0d34org68mry2e4b5n2k.jpg" class="header-image">
         <div class="content">
             <p>Welcome <strong>{user}</strong>!</p>
-            <h2>Thanks for choosing Electroplix!</h2>
-            <p>We’re excited to have you join our dynamic community where innovation meets design. Get ready to unlock the secrets to building stunning websites faster than ever! 🚀</p><br>
+            <h2>Thanks for choosing Hobby Master!</h2>
+            <p>We’re thrilled to have you join our vibrant community of innovators, creators, and learners! At Hobby Master, we’re committed to helping you unleash your potential through cutting-edge content, hands-on coding, and AI integration.</p><br>
             <p><strong>🔍 What Awaits You:</strong></p>
             <ul>
-                <li><strong>Innovative Solutions:</strong> Explore our diverse range of web components and templates that empower you to create exceptional digital experiences with ease.</li>
-                <li><strong>Expert Insights:</strong> Stay ahead with our cutting-edge content that covers everything from custom web development to effective digital marketing strategies.</li>
-                <li><strong>Community Collaboration:</strong> Connect with fellow innovators, share your projects, and collaborate on exciting ventures to elevate your business.</li>
+                <li><strong>Hands-On Coding:</strong> Learn by doing with practical coding exercises and projects designed to boost your skills.</li>
+                <li><strong>AI Integration:</strong> Discover how to leverage AI tools to enhance your productivity and creativity.</li>
+                <li><strong>High-Quality Content:</strong> Crafted with excellence, our tutorials and resources bring you the latest in coding, robotics, and technology.</li>
             </ul>
-            <p>As a valued member, you’ll receive exclusive access to webinars, resources, and support to supercharge your digital journey. Let’s innovate together!</p>
-            <p>If you have any questions or brilliant ideas, don’t hesitate to reach out at <a href="mailto:official.electroplix@gmail.com">official.electroplix@gmail.com</a>. We’re here to help you thrive.</p><br>
-            <p>Happy Building!</p><br>
-            <p>Warm regards,<br>Syed Adnan Ali<br>Founder & CEO, Electroplix</p>
+            <p>As a valued member, you'll have exclusive access to webinars, advanced resources, and a community of like-minded individuals all working towards innovation and success. Let's build the future together!</p>
+            <p>If you have any questions or ideas, don't hesitate to reach out to us at <a href="mailto:official.electroplix@gmail.com">official.electroplix@gmail.com</a>. We’re here to support your journey.</p><br>
+            <p>Happy Learning!</p><br>
+            <p>Warm regards,<br>Syed Adnan Ali<br>Founder & CEO, Hobby Master</p>
         </div><br>
         <div class="footer">
             <p>Follow us on:</p>
             <div class="social-links">
-                <a href="https://x.com/Electroplix_" target="_blank">X</a> |
-                <a href="https://www.facebook.com/people/Electroplix/61565564645521/" target="_blank">Facebook</a> |
-                <a href="https://instagram.com/electroplixofficial" target="_blank">Instagram</a>
+                <a href="https://x.com/hobbymaster24" target="_blank">X</a> |
+                <a href="https://www.facebook.com/profile.php?id=61564020777196" target="_blank">Facebook</a> |
+                <a href="https://www.instagram.com/hobbymaster24/" target="_blank">Instagram</a>
             </div>
-            <p><img src="https://www.electroplix.com/Electroplix_logo.jpeg" alt="Company Logo" style="width: 100px; height: auto; margin-top: 10px;"></p>
+            <p><img src="https://www.hobbymaster.xyz/assets/channel_logo.png" alt="Hobby Master Logo" style="width: 100px; height: auto; margin-top: 10px;"></p>
+            <p>© 2025 Hobby Master. All rights reserved.</p>
         </div>
     </div>
 </body>
