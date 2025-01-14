@@ -61,6 +61,7 @@ const Page: React.FC = () => {
       if (error.response?.status === 400) {
         addToast("Wrong credentials. Please try again.", 'error');
       } else if (error.response?.status === 500) {
+        console.log("Internal server error ", error)
         addToast("Internal server error. Please try again later.", 'error');
       } else {
         addToast("An unexpected error occurred. Please try again.", 'error');

@@ -48,7 +48,7 @@ const Navbar2 = () => {
               <Link href="/Contact" className={`text-xl text-white hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium`} >
                 Contact
               </Link>
-              <Link href="/Signin">
+              <Link href="/SignUp">
                 <button className="relative inline-flex items-center justify-center px-3 py-2 border rounded-md text-sm font-bold text-white-800 hover:text-pink-600 hover:bg-white bg-black group" >
                   <span className="absolute inset-0 bg-gradient-to-r from-neon-pink to-neon-blue rounded-md blur opacity-75 transition-opacity duration-300 group-hover:opacity-100"></span>
                   <span className="relative">Sign In</span>
@@ -93,7 +93,7 @@ const Navbar2 = () => {
           <Link href="/Contact" className={`text-xl text-white hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium`} onClick={() => { toggleMenu();  }}>
             Contact
           </Link>
-          <Link href="/Signin" className={`text-xl text-white hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium`} onClick={() => { toggleMenu();  }}>
+          <Link href="/SignUp" className={`text-xl text-white hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium`} onClick={() => { toggleMenu();  }}>
             Sign In
           </Link>
         </div>

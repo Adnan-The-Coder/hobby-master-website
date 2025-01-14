@@ -1,14 +1,15 @@
 "use client";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from 'react';
+import Footer from '@/components/Footer';
+import Navbar2 from '@/components/Navbar2';
+import axios from 'axios';
 import { useRouter } from "next/navigation";
-import axios from "axios";
 import { motion } from "framer-motion";
 import { FaUser, FaEnvelope, FaLock, FaSpinner } from "react-icons/fa";
 import PasswordStrengthMeter from "@/components/ui/PasswordStrengthMeter";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import ToastMessage from "@/components/ui/ToastMessage"; // Import your ToastMessage component
+import Link from 'next/link';
+
 
 interface Toast {
   id: number;
@@ -16,7 +17,12 @@ interface Toast {
   type: 'success' | 'error';
 }
 
-const Page: React.FC = () => {
+const Signin = () => {
+  const [isClient, setIsClient] = useState(false);
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
   const router = useRouter();
   const [user, setUser] = useState({
     email: "",
@@ -73,10 +79,37 @@ const Page: React.FC = () => {
     setButtonDisabled(!(user.email && user.password && user.username));
   }, [user]);
 
+
+  const handleClick = () => {
+    if (audio) {
+      audio.play();
+    }
+  };
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+    }
+  };
+
   return (
     <>
-    <Navbar /> 
-      <div className="py-8 min-h-screen bg-gradient-to-br from-emerald-900 via-gray-900 to-emerald-900 flex items-center justify-center relative overflow-hidden">
+      <Navbar2 />
+      <div id="hero" className="relative h-screen w-full">
+        {isClient && (
+          <video 
+            ref={videoRef}
+            className="absolute inset-0 w-full h-full object-cover"
+            src="/assets/desk_hero.mp4" 
+            autoPlay 
+            loop 
+            muted={isMuted}
+            playsInline
+          />
+        )}
+        <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center text-center px-4">
+        <div className="py-8 h-svh bg-opacity bg-gradient-to-br from-emerald-900 via-gray-900 to-emerald-900 flex items-center justify-center relative overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -162,14 +195,17 @@ const Page: React.FC = () => {
           </div>
         </motion.div>
       </div>
-      <Footer />
-      <div className="absolute top-0 right-0 p-4">
+        </div>
+        <div className="absolute top-0 right-0 p-4">
         {toasts.map((toast) => (
           <ToastMessage key={toast.id} message={toast.message} type={toast.type} onClose={() => removeToast(toast.id)} />
         ))}
+      </div>  
+      <br />
       </div>
+      <Footer />
     </>
   );
 };
 
-export default Page;
+export default Signin;
