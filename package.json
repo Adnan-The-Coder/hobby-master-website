@@ -30,7 +30,9 @@
     "react-icons": "^5.2.1",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
-    "three": "^0.167.0"
+    "three": "^0.167.0",
+    "@stripe/react-stripe-js": "^2.7.1",
+    "@stripe/stripe-js": "^3.5.0"
   },
   "devDependencies": {
     "@types/node": "^20",
