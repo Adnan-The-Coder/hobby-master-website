@@ -16,6 +16,7 @@
     "react-hot-toast": "^2.4.1",
     "clsx": "^2.1.1",
     "firebase": "^10.12.3",
+    "mongoose": "^8.6.1",
     "framer-motion": "^11.3.28",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.408.0",
