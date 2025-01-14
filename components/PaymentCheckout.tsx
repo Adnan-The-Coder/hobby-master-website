@@ -16,7 +16,7 @@ const CheckoutPage = ({ amount }: { amount: number }) => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch("/api/create-payment-intent", {
+    fetch("/api/payments/stripe/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
