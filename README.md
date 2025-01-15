@@ -8,6 +8,10 @@ This website is built using:
 - [Next.js](https://nextjs.org/)
 - [Framer Motion](https://www.framer.com/api/motion/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- MongoDB
+- Razorpay
+- Stripe
+- Supabase
 - And much more...
 
 ## Getting Started
