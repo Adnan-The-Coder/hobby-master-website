@@ -1,11 +1,8 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-interface Step1WelcomeProps {
-  nextStep: () => void;
-}
 
-const Step1Welcome: React.FC<Step1WelcomeProps> = ({ nextStep }) => {
+const Step1Welcome = ({ onNext }: { onNext: () => void }) => {
   return (
     <motion.div
       className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 text-white p-6"
@@ -41,7 +38,7 @@ const Step1Welcome: React.FC<Step1WelcomeProps> = ({ nextStep }) => {
         className="bg-white text-blue-600 font-semibold px-8 py-4 rounded-full shadow-lg hover:bg-gray-100 transition duration-300"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
-        onClick={nextStep}
+        onClick={onNext}
       >
         Start
       </motion.button>
