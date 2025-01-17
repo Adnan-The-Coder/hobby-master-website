@@ -19,6 +19,10 @@ function Page() {
   const handleNext = () => {
     setCurrentStep((prev) => Math.min(prev + 1, 10)); // Adjust max to 10 for total steps
   };
+  const handleComplete = () => {
+    console.log("Pushing Data to database....")
+    // Data pushing to DB Here
+  };
 
   const handlePrevious = () => {
     setCurrentStep((prev) => Math.max(prev - 1, 1)); // Adjust min to the first step
@@ -36,7 +40,7 @@ function Page() {
       {currentStep === 7 && <Step7Welcome onNext={handleNext} onPrevious={handlePrevious} />}
       {currentStep === 8 && <Step8Welcome onNext={handleNext} onPrevious={handlePrevious} />}
       {currentStep === 9 && <Step9Welcome onNext={handleNext} onPrevious={handlePrevious} />}
-      {currentStep === 10 && <Step10Welcome onNext={handleNext} onPrevious={handlePrevious} />}
+      {currentStep === 10 && <Step10Welcome onComplete={handleComplete} onPrevious={handlePrevious} />}
 
       {/* Navigation Buttons */}
       <div className="fixed bottom-4 left-4 right-4 flex justify-between items-center">

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { MdInfoOutline } from "react-icons/md";
 
 const Step6Welcome = ({
   onNext,
@@ -12,23 +13,10 @@ const Step6Welcome = ({
   const [ageGroup, setAgeGroup] = useState("");
   const [culturalPreference, setCulturalPreference] = useState("");
   const [motivationalFactor, setMotivationalFactor] = useState("");
+  const [showInfo, setShowInfo] = useState(false);
 
-  const ageGroups = [
-    "Under 18",
-    "18-24",
-    "25-34",
-    "35-44",
-    "45-54",
-    "55+",
-  ];
-
-  const culturalPreferences = [
-    "Western",
-    "Eastern",
-    "Global",
-    "Local",
-  ];
-
+  const ageGroups = ["Under 18", "18-24", "25-34", "35-44", "45-54", "55+"];
+  const culturalPreferences = ["Western", "Eastern", "Global", "Local"];
   const motivationalFactors = [
     "Achieving a goal",
     "Gaining recognition",
@@ -86,9 +74,16 @@ const Step6Welcome = ({
         </div>
 
         {/* Cultural Preference Selection */}
-        <div className="mb-6">
-          <h3 className="text-lg font-medium text-gray-700 mb-3">
-            What’s your cultural preference?
+        <div className="mb-6 relative">
+          <h3 className="text-lg font-medium text-gray-700 mb-3 flex items-center">
+            What’s your cultural preference?{" "}
+            <button
+              onClick={() => setShowInfo(!showInfo)}
+              className="ml-2 text-gray-500 hover:text-gray-700"
+              aria-label="Learn about cultural preferences"
+            >
+              <MdInfoOutline />
+            </button>
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {culturalPreferences.map((preference) => (
@@ -113,6 +108,30 @@ const Step6Welcome = ({
               </label>
             ))}
           </div>
+
+          {/* Info Popup */}
+          {showInfo && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3 }}
+              className="absolute top-full mt-2 p-4 bg-white border border-gray-300 rounded-lg shadow-lg w-full sm:w-2/3"
+            >
+              <p className="text-sm text-gray-700">
+                <strong>Cultural preference</strong> helps us understand your
+                background and tailor the content to resonate with your values,
+                traditions, and interests. It’s important because it ensures
+                the learning experience feels more relevant and engaging for
+                you.
+              </p>
+              <button
+                onClick={() => setShowInfo(false)}
+                className="mt-2 text-sm text-red-500 hover:underline"
+              >
+                Close
+              </button>
+            </motion.div>
+          )}
         </div>
 
         {/* Motivational Factors Selection */}

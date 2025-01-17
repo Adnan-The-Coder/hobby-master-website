@@ -9,26 +9,19 @@ const Step5Welcome = ({
   onNext: () => void;
   onPrevious: () => void;
 }) => {
-  const [timeCommitment, setTimeCommitment] = useState("");
   const [preferredSchedule, setPreferredSchedule] = useState("");
+  const [preferDeadlines, setPreferDeadlines] = useState(false);
+  const [preferredDeadline, setPreferredDeadline] = useState("");
 
-  const timeOptions = [
-    "Less than 1 hour per day",
-    "1-2 hours per day",
-    "3-5 hours per day",
-    "More than 5 hours per day",
-  ];
-
-  const scheduleOptions = [
-    "Morning",
-    "Afternoon",
-    "Evening",
-    "Flexible",
-  ];
+  const scheduleOptions = ["Morning", "Afternoon", "Evening", "Flexible"];
+  const deadlineOptions = ["1 week", "2 weeks", "3 weeks", "1 month"];
 
   const handleNext = () => {
-    console.log("Time Commitment:", timeCommitment);
     console.log("Preferred Schedule:", preferredSchedule);
+    console.log("Prefer Deadlines:", preferDeadlines);
+    if (preferDeadlines) {
+      console.log("Preferred Deadline:", preferredDeadline);
+    }
     onNext();
   };
 
@@ -41,38 +34,8 @@ const Step5Welcome = ({
         className="bg-white shadow-lg rounded-lg max-w-3xl w-full p-6 sm:p-10"
       >
         <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-800 mb-6">
-          How much time can you commit to learning? ⏳📅
+          When do you prefer to learn? 📅
         </h2>
-
-        {/* Time Commitment Selection */}
-        <div className="mb-6">
-          <h3 className="text-lg font-medium text-gray-700 mb-3">
-            Select your time commitment:
-          </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {timeOptions.map((option) => (
-              <label
-                key={option}
-                className={`flex items-center space-x-3 border rounded-lg p-3 cursor-pointer transition ${
-                  timeCommitment === option
-                    ? "bg-teal-100 border-teal-500"
-                    : "bg-gray-100 border-gray-300"
-                }`}
-                onClick={() => setTimeCommitment(option)}
-              >
-                <input
-                  type="radio"
-                  name="timeCommitment"
-                  value={option}
-                  checked={timeCommitment === option}
-                  onChange={() => setTimeCommitment(option)}
-                  className="form-radio h-5 w-5 text-teal-500"
-                />
-                <span className="text-gray-700 font-medium">{option}</span>
-              </label>
-            ))}
-          </div>
-        </div>
 
         {/* Preferred Schedule Selection */}
         <div className="mb-6">
@@ -104,6 +67,84 @@ const Step5Welcome = ({
           </div>
         </div>
 
+        {/* Deadline Preference */}
+        <div className="mb-6">
+          <h3 className="text-lg font-medium text-gray-700 mb-3">
+            Do you prefer deadlines to stay on track and avoid procrastination?
+          </h3>
+          <div className="flex space-x-4 mb-2">
+            <label
+              className={`flex items-center space-x-3 border rounded-lg p-3 cursor-pointer transition ${
+                preferDeadlines
+                  ? "bg-teal-100 border-teal-500"
+                  : "bg-gray-100 border-gray-300"
+              }`}
+              onClick={() => setPreferDeadlines(true)}
+            >
+              <input
+                type="radio"
+                name="preferDeadlines"
+                checked={preferDeadlines}
+                onChange={() => setPreferDeadlines(true)}
+                className="form-radio h-5 w-5 text-teal-500"
+              />
+              <span className="text-gray-700 font-medium">Yes</span>
+            </label>
+            <label
+              className={`flex items-center space-x-3 border rounded-lg p-3 cursor-pointer transition ${
+                !preferDeadlines
+                  ? "bg-teal-100 border-teal-500"
+                  : "bg-gray-100 border-gray-300"
+              }`}
+              onClick={() => setPreferDeadlines(false)}
+            >
+              <input
+                type="radio"
+                name="preferDeadlines"
+                checked={!preferDeadlines}
+                onChange={() => setPreferDeadlines(false)}
+                className="form-radio h-5 w-5 text-teal-500"
+              />
+              <span className="text-gray-700 font-medium">No</span>
+            </label>
+          </div>
+          <p className="text-sm text-gray-600">
+            Deadlines are dynamic and can be adjusted, but they encourage consistency and help you avoid procrastination.
+          </p>
+        </div>
+
+        {/* Preferred Deadline Selection */}
+        {preferDeadlines && (
+          <div className="mb-6">
+            <h3 className="text-lg font-medium text-gray-700 mb-3">
+              Select your preferred deadline:
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {deadlineOptions.map((option) => (
+                <label
+                  key={option}
+                  className={`flex items-center space-x-3 border rounded-lg p-3 cursor-pointer transition ${
+                    preferredDeadline === option
+                      ? "bg-teal-100 border-teal-500"
+                      : "bg-gray-100 border-gray-300"
+                  }`}
+                  onClick={() => setPreferredDeadline(option)}
+                >
+                  <input
+                    type="radio"
+                    name="preferredDeadline"
+                    value={option}
+                    checked={preferredDeadline === option}
+                    onChange={() => setPreferredDeadline(option)}
+                    className="form-radio h-5 w-5 text-teal-500"
+                  />
+                  <span className="text-gray-700 font-medium">{option}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Navigation Buttons */}
         <div className="flex justify-between">
           <motion.button
@@ -119,9 +160,13 @@ const Step5Welcome = ({
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleNext}
-            disabled={!timeCommitment || !preferredSchedule}
+            disabled={
+              !preferredSchedule ||
+              (preferDeadlines && !preferredDeadline)
+            }
             className={`px-6 py-3 rounded-lg text-white font-semibold transition ${
-              !timeCommitment || !preferredSchedule
+              !preferredSchedule ||
+              (preferDeadlines && !preferredDeadline)
                 ? "bg-gray-300 cursor-not-allowed"
                 : "bg-teal-500 hover:bg-teal-600"
             }`}

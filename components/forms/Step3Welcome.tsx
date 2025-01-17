@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 const Step3Welcome = ({ onNext, onPrevious }: { onNext: () => void; onPrevious: () => void }) => {
   const [learningPreferences, setLearningPreferences] = useState<string[]>([]);
   const [pace, setPace] = useState("");
+  const [gamifiedInterest, setGamifiedInterest] = useState<number>(3); // Default to level 3
+  const [storytellingInterest, setStorytellingInterest] = useState<number>(3); // Default to level 3
 
   const preferences = [
     "Kinesthetic (hands-on, interactive projects)",
@@ -27,6 +29,12 @@ const Step3Welcome = ({ onNext, onPrevious }: { onNext: () => void; onPrevious: 
     }
     console.log("Learning Preferences:", learningPreferences);
     console.log("Preferred Pace:", pace);
+    if (learningPreferences.includes("Gamified learning")) {
+      console.log("Interest in Gamified Learning:", gamifiedInterest);
+    }
+    if (learningPreferences.includes("Storytelling-based")) {
+      console.log("Interest in Storytelling:", storytellingInterest);
+    }
     onNext();
   };
 
@@ -66,6 +74,54 @@ const Step3Welcome = ({ onNext, onPrevious }: { onNext: () => void; onPrevious: 
           </div>
         </div>
 
+        {/* Gamified Interest Slider */}
+        {learningPreferences.includes("Gamified learning") && (
+          <div className="mb-6">
+            <h3 className="text-lg font-medium text-gray-700 mb-3">
+              How interested are you in gamified content? 🎮
+            </h3>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              value={gamifiedInterest}
+              onChange={(e) => setGamifiedInterest(Number(e.target.value))}
+              className="w-full"
+            />
+            <p className="text-center mt-2 text-gray-600">
+              {gamifiedInterest === 1
+                ? "Not interested"
+                : gamifiedInterest === 5
+                ? "Highly interested"
+                : `Level ${gamifiedInterest}`}
+            </p>
+          </div>
+        )}
+
+        {/* Storytelling Interest Slider */}
+        {learningPreferences.includes("Storytelling-based") && (
+          <div className="mb-6">
+            <h3 className="text-lg font-medium text-gray-700 mb-3">
+              How much storytelling do you want in your courses? 📖
+            </h3>
+            <input
+              type="range"
+              min="1"
+              max="5"
+              value={storytellingInterest}
+              onChange={(e) => setStorytellingInterest(Number(e.target.value))}
+              className="w-full"
+            />
+            <p className="text-center mt-2 text-gray-600">
+              {storytellingInterest === 1
+                ? "Minimal"
+                : storytellingInterest === 5
+                ? "A lot"
+                : `Level ${storytellingInterest}`}
+            </p>
+          </div>
+        )}
+
         {/* Pace */}
         <div className="mb-8">
           <label htmlFor="pace" className="block text-gray-700 font-medium mb-2">
@@ -100,7 +156,9 @@ const Step3Welcome = ({ onNext, onPrevious }: { onNext: () => void; onPrevious: 
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleNext}
-            disabled={learningPreferences.length === 0 || pace.trim() === ""}
+            disabled={
+              learningPreferences.length === 0 || pace.trim() === ""
+            }
             className={`px-6 py-3 rounded-lg text-white font-semibold transition ${
               learningPreferences.length === 0 || pace.trim() === ""
                 ? "bg-gray-300 cursor-not-allowed"

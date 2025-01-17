@@ -2,7 +2,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-const Step2Welcome = ({ onNext }: { onNext: () => void }) => {
+const Step2Welcome = ({
+  onNext,
+  onPrevious,
+}: {
+  onNext: () => void;
+  onPrevious: () => void;
+}) => {
   const [selectedHobbies, setSelectedHobbies] = useState<string[]>([]);
   const [otherHobby, setOtherHobby] = useState("");
 
