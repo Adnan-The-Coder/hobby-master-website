@@ -44,7 +44,7 @@ const Footer = () => {
             <a href="https://www.youtube.com/channel/UC9wt9ih0-acWfeWXLI5oDIQ?sub_confirmation=1" target='_blank' className="text-2xl text-white hover:text-red-800"><FaYoutube /></a>
             <a href="https://www.instagram.com/hobbymaster24" target='_blank' className="text-2xl text-white hover:text-pink-400"><FaInstagram /></a>
             <a href="https://www.linkedin.com/in/hobby-master-real" target='_blank' className="text-2xl text-white hover:text-blue-700"><FaLinkedin /></a>
-            <a href="https://github.com/Adnan00786/" target='_blank' className="text-2xl text-white hover:text-black"><FaGithub /></a>
+            <a href="https://github.com/Adnan-The-Coder" target='_blank' className="text-2xl text-white hover:text-black"><FaGithub /></a>
             <a href="https://whatsapp.com/channel/0029VacNUTs9sBI23zLCuO11" target="_blank" rel="noopener noreferrer" className="text-2xl text-white hover:text-green-500"><FaWhatsapp /></a>
           </div>
         </div>
