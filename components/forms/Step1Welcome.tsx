@@ -19,6 +19,7 @@ const Step1Welcome = ({ onNext }: { onNext: () => void }) => {
 
     generateSessionId();
   }, []);
+  console.log(localStorage.getItem("personalized_session_id"));
 
   return (
     <motion.div
