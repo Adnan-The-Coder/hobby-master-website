@@ -219,3 +219,35 @@ export const WELCOME_EMAIL_TEMPLATE = `
 </body>
 </html>
 `;
+
+
+export const PAYMENT_SUCCESS_EARLY_ACCESS = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Early Purchase Confirmation</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+  <div style="background: linear-gradient(to right, #4CAF50, #45a049); padding: 20px; text-align: center;">
+    <h1 style="color: white; margin: 0;">Early Purchase Success!</h1>
+  </div>
+  <div style="background-color: #f9f9f9; padding: 20px; border-radius: 0 0 5px 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <p>Dear [Customer Name],</p>
+    <p>We are excited to inform you that your early purchase has been successfully processed! As a valued early supporter, we are pleased to offer you exclusive prior access and additional discounts on our upcoming Premium Plans.</p>
+    <p>Here’s what you can look forward to:</p>
+    <ul>
+      <li><strong>Exclusive Early Access:</strong> Be among the first to experience our Premium Plans before they are made available to the public.</li>
+      <li><strong>Additional Discounts:</strong> Enjoy special pricing and discounts on all upcoming Premium Plans, available only to early purchasers like yourself.</li>
+    </ul>
+    <p>We will notify you as soon as the Premium Plans are available, along with your exclusive discount details.</p>
+    <p>Thank you for your continued trust in Hobby Master. We’re excited to have you with us and look forward to bringing you even more value with our Premium offerings!</p>
+    <p>Best regards,<br>Hobby Master</p>
+  </div>
+  <div style="text-align: center; margin-top: 20px; color: #888; font-size: 0.8em;">
+    <p>This is an automated message, please do not reply to this email.</p>
+  </div>
+</body>
+</html>
+`
