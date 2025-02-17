@@ -1,8 +1,27 @@
 import { motion } from "framer-motion";
-import React from "react";
-
+import React, { useEffect } from "react";
 
 const Step1Welcome = ({ onNext }: { onNext: () => void }) => {
+  useEffect(() => {
+    // Generate a unique session ID if it doesn't already exist
+    const generateSessionId = () => {
+      // const existingSessionId = localStorage.getItem("personalized_session_id");
+      const existingSessionId = "238342asjb@Q@!@*$(";
+      if (!existingSessionId) {
+        const newSessionId = Array.from({ length: 20 }, () =>
+          Math.random().toString(36).charAt(2)
+        ).join("");
+        // localStorage.setItem("personalized_session_id", newSessionId);
+        console.log("Generated Session ID:", newSessionId);
+      } else {
+        console.log("Existing Session ID:", existingSessionId);
+      }
+    };
+
+    generateSessionId();
+  }, []);
+  // console.log(localStorage.getItem("personalized_session_id"));
+
   return (
     <motion.div
       className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 text-white p-6"

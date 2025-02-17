@@ -1,7 +1,7 @@
 import nodemailer from "nodemailer";
 import User from "@/models/userModel";
 import bcryptjs from "bcryptjs";
-import { VERIFICATION_EMAIL_TEMPLATE, PASSWORD_RESET_REQUEST_TEMPLATE, PASSWORD_RESET_SUCCESS_TEMPLATE, WELCOME_EMAIL_TEMPLATE } from "./emailTemplates.js";
+import { VERIFICATION_EMAIL_TEMPLATE, PASSWORD_RESET_REQUEST_TEMPLATE, PASSWORD_RESET_SUCCESS_TEMPLATE, WELCOME_EMAIL_TEMPLATE,PAYMENT_SUCCESS_EARLY_ACCESS } from "./emailTemplates.js";
 import { NextResponse } from "next/server.js";
 
 export const sendEmail = async ({ email, emailType, userId,username="user" }:any) => {
@@ -42,6 +42,11 @@ export const sendEmail = async ({ email, emailType, userId,username="user" }:any
             case 'WELCOME':
                 emailSubject = "😄 You’re In! Get Ready for Creative Sparks (and Smiles)!";
                 emailHtml = WELCOME_EMAIL_TEMPLATE.replace("{user}",username);
+                break;
+
+            case 'EARLY_SUCCESS_EMAIL':
+                emailSubject = "Your Early Purchase is Locked In – Here’s What Happens Next!";
+                emailHtml = PAYMENT_SUCCESS_EARLY_ACCESS.replace("[Customer Name]",username);
                 break;
 
             // Add more cases as needed

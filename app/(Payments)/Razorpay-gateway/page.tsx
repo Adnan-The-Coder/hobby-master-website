@@ -1,9 +1,44 @@
 "use client";
+import PaymentCheckoutForm from '@/components/Payments/PaymentForm';
+import PaymentSuccess from '@/components/Payments/PaymentSuccess';
 import Script from 'next/script';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useRouter } from "next/navigation";
+import axios from 'axios';
+
+interface UserData {
+  _id: string;
+  username: string;
+  email: string;
+  isVerified: boolean; // Updated to use isVerified
+  isAdmin: boolean;    // You can use this if needed
+}
 
 function Page() {
     const [amount,setAmount] = useState<number>(0);
+    const [email,setEmail] = useState<string>('');
+    const [data, setData] = useState<UserData | null>(null);
+    const router = useRouter();
+
+
+    const getUserDetails = async () => {
+      try {
+          const res = await axios.get<{ data: UserData }>('/api/users/me');
+          setData(res.data.data);
+      } catch (error) {
+          console.error(error);
+      }
+  };
+    
+
+    useEffect(()=>{
+      getUserDetails();
+    });
+
+    const EmailSuccess = async () => {
+      await axios.post("/api/payments/razorpay/sendVerifyEmail", data);
+      alert("Email Sent !");
+    }
 
     const createOrder = async () => {
         const res = await fetch('/api/payments/razorpay/createOrder',{
@@ -30,7 +65,10 @@ function Page() {
                 console.log(data);
                 if (data.isOk) {
                   // do whatever page transition you want here as payment was successful
-                  alert("Payment successful");
+                  router.push('/Payment-Success');
+                  EmailSuccess();
+                  // alert("Payment successful");
+                  // <PaymentSuccess/>
                 } else {
                   alert("Payment failed");
                 }
@@ -49,7 +87,14 @@ function Page() {
             type='text/javascript'
             src='https://checkout.razorpay.com/v1/checkout.js'
         />
-      <input
+        <PaymentCheckoutForm
+        amount={amount}
+        setAmount={setAmount}
+        email={email}
+        setEmail={setEmail}
+        onPaymentSubmit={createOrder} // Pass the createOrder function
+      />
+      {/* <input
         type='number'
         placeholder='Enter Amount'
         className="px-4 py-2 rounded-md text-black"
@@ -60,7 +105,7 @@ function Page() {
       onClick={createOrder}
       >
         Create Order
-      </button>
+      </button> */}
     </div>
   )
 }
