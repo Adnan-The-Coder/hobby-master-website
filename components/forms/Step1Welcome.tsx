@@ -5,12 +5,13 @@ const Step1Welcome = ({ onNext }: { onNext: () => void }) => {
   useEffect(() => {
     // Generate a unique session ID if it doesn't already exist
     const generateSessionId = () => {
-      const existingSessionId = localStorage.getItem("personalized_session_id");
+      // const existingSessionId = localStorage.getItem("personalized_session_id");
+      const existingSessionId = "238342asjb@Q@!@*$(";
       if (!existingSessionId) {
         const newSessionId = Array.from({ length: 20 }, () =>
           Math.random().toString(36).charAt(2)
         ).join("");
-        localStorage.setItem("personalized_session_id", newSessionId);
+        // localStorage.setItem("personalized_session_id", newSessionId);
         console.log("Generated Session ID:", newSessionId);
       } else {
         console.log("Existing Session ID:", existingSessionId);
@@ -19,7 +20,7 @@ const Step1Welcome = ({ onNext }: { onNext: () => void }) => {
 
     generateSessionId();
   }, []);
-  console.log(localStorage.getItem("personalized_session_id"));
+  // console.log(localStorage.getItem("personalized_session_id"));
 
   return (
     <motion.div
