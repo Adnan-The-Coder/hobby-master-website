@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Script from 'next/script';
 import axios from 'axios';
 import ThankYouAnimation from './ThankYouComponent';
+import ClientThankYou from './ClientThankYou';
 
 interface DonationModalProps {
   isOpen: boolean;
@@ -124,6 +125,12 @@ const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose }) => {
     exit: { opacity: 0 }
   };
 
+  // Handle thank you animation close
+  const handleThankYouClose = () => {
+    setShowThankYou(false);
+    onClose(); // Close the donation modal after thank you animation
+  };
+  
   return (
     <>
       <Script 
@@ -216,11 +223,10 @@ const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose }) => {
                     </>
                   )}
                 </motion.button>
-                <ThankYouAnimation
+                <ClientThankYou
                     show={showThankYou} 
-                    onClose={() => setShowThankYou(false)} 
+                    onClose={handleThankYouClose} 
                 />
-
                 <div className="mt-6 text-center">
                   <p className="text-gray-400 text-sm">
                     Powered by Razorpay. Your payment information is secure.

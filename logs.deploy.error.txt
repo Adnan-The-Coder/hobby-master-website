@@ -1,0 +1,182 @@
+[23:05:05.565] Cloning github.com/Adnan-The-Coder/hobby-master-website (Branch: main, Commit: e03698c)
+[23:05:06.806] Cloning completed: 1.241s
+[23:05:12.305] Restored build cache from previous deployment (A2MtAe2nHEuFyrcq37kufiJgAwsf)
+[23:05:12.452] Running build in Washington, D.C., USA (East) – iad1
+[23:05:13.048] Running "vercel build"
+[23:05:13.421] Vercel CLI 41.6.0
+[23:05:13.712] Installing dependencies...
+[23:05:13.749] bun install v1.2.9 (9a329c04)
+[23:05:13.811] 
+[23:05:13.811] Checked 674 installs across 670 packages (no changes) [74.00ms]
+[23:05:13.814] Detected Next.js version: 14.2.5
+[23:05:13.816] Running "bun run build"
+[23:05:13.822] $ next build
+[23:05:14.477]   ▲ Next.js 14.2.5
+[23:05:14.478] 
+[23:05:14.548]    Creating an optimized production build ...
+[23:05:32.442]  ✓ Compiled successfully
+[23:05:32.442]    Linting and checking validity of types ...
+[23:05:42.533]    Collecting page data ...
+[23:05:44.808]    Generating static pages (0/39) ...
+[23:05:45.861] Mongo DB Connected Successfully
+[23:05:45.861] Mongo DB Connected Successfully
+[23:05:45.861] Mongo DB Connected Successfully
+[23:05:45.861] Mongo DB Connected Successfully
+[23:05:45.861] Mongo DB Connected Successfully
+[23:05:45.861] Mongo DB Connected Successfully
+[23:05:45.861] Mongo DB Connected Successfully
+[23:05:46.336]    Generating static pages (9/39) 
+[23:05:46.872]    Generating static pages (19/39) 
+[23:05:47.678]    Generating static pages (29/39) 
+[23:05:48.236] Error: Event handlers cannot be passed to Client Component props.
+[23:05:48.236]   {show: true, onClose: function onClose}
+[23:05:48.237]                         ^^^^^^^^^^^^^^^^
+[23:05:48.237] If you need interactivity, consider converting part of this to a Client Component.
+[23:05:48.237]     at ek (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:140566)
+[23:05:48.237]     at Object.toJSON (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:135755)
+[23:05:48.238]     at stringify (<anonymous>)
+[23:05:48.238]     at eR (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142219)
+[23:05:48.238]     at eE (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142698)
+[23:05:48.238]     at AsyncLocalStorage.run (node:async_hooks:346:14)
+[23:05:48.239]     at Timeout._onTimeout (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:150397)
+[23:05:48.239]     at listOnTimeout (node:internal/timers:581:17)
+[23:05:48.239]     at process.processTimers (node:internal/timers:519:7) {
+[23:05:48.239]   digest: '3940764023'
+[23:05:48.239] }
+[23:05:48.240] Error: Event handlers cannot be passed to Client Component props.
+[23:05:48.240]   {show: true, onClose: function onClose}
+[23:05:48.240]                         ^^^^^^^^^^^^^^^^
+[23:05:48.240] If you need interactivity, consider converting part of this to a Client Component.
+[23:05:48.240]     at ek (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:140566)
+[23:05:48.240]     at Object.toJSON (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:135755)
+[23:05:48.241]     at stringify (<anonymous>)
+[23:05:48.241]     at eR (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142219)
+[23:05:48.241]     at eE (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142698)
+[23:05:48.241]     at Timeout._onTimeout (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:135475)
+[23:05:48.241]     at listOnTimeout (node:internal/timers:581:17)
+[23:05:48.241]     at process.processTimers (node:internal/timers:519:7) {
+[23:05:48.242]   digest: '333909459'
+[23:05:48.242] }
+[23:05:48.242] Error: Event handlers cannot be passed to Client Component props.
+[23:05:48.242]   {show: true, onClose: function onClose}
+[23:05:48.242]                         ^^^^^^^^^^^^^^^^
+[23:05:48.242] If you need interactivity, consider converting part of this to a Client Component.
+[23:05:48.243]     at ek (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:140566)
+[23:05:48.243]     at Object.toJSON (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:135755)
+[23:05:48.243]     at stringify (<anonymous>)
+[23:05:48.243]     at eR (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142219)
+[23:05:48.243]     at eE (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142698)
+[23:05:48.244]     at Timeout._onTimeout (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:135475)
+[23:05:48.244]     at listOnTimeout (node:internal/timers:581:17)
+[23:05:48.244]     at process.processTimers (node:internal/timers:519:7) {
+[23:05:48.244]   digest: '333909459'
+[23:05:48.244] }
+[23:06:48.242]  ⚠ Sending SIGTERM signal to static worker due to timeout of 60 seconds. Subsequent errors may be a result of the worker exiting.
+[23:06:48.748]  ⨯ Static worker exited with code: null and signal: SIGTERM
+[23:06:48.756]  ⚠ Restarted static page generation for /test because it took more than 60 seconds
+[23:06:48.756]  ⚠ See more info here https://nextjs.org/docs/messages/static-page-generation-timeout
+[23:06:48.952] Error: Event handlers cannot be passed to Client Component props.
+[23:06:48.955]   {show: true, onClose: function onClose}
+[23:06:48.955]                         ^^^^^^^^^^^^^^^^
+[23:06:48.955] If you need interactivity, consider converting part of this to a Client Component.
+[23:06:48.955]     at ek (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:140566)
+[23:06:48.955]     at Object.toJSON (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:135755)
+[23:06:48.956]     at stringify (<anonymous>)
+[23:06:48.956]     at eR (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142219)
+[23:06:48.956]     at eE (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142698)
+[23:06:48.956]     at AsyncLocalStorage.run (node:async_hooks:346:14)
+[23:06:48.956]     at Timeout._onTimeout (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:150397)
+[23:06:48.956]     at listOnTimeout (node:internal/timers:581:17)
+[23:06:48.956]     at process.processTimers (node:internal/timers:519:7) {
+[23:06:48.956]   digest: '3940764023'
+[23:06:48.956] }
+[23:06:48.957] Error: Event handlers cannot be passed to Client Component props.
+[23:06:48.957]   {show: true, onClose: function onClose}
+[23:06:48.957]                         ^^^^^^^^^^^^^^^^
+[23:06:48.957] If you need interactivity, consider converting part of this to a Client Component.
+[23:06:48.958]     at ek (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:140566)
+[23:06:48.959]     at Object.toJSON (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:135755)
+[23:06:48.959]     at stringify (<anonymous>)
+[23:06:48.959]     at eR (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142219)
+[23:06:48.959]     at eE (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142698)
+[23:06:48.959]     at Timeout._onTimeout (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:135475)
+[23:06:48.959]     at listOnTimeout (node:internal/timers:581:17)
+[23:06:48.960]     at process.processTimers (node:internal/timers:519:7) {
+[23:06:48.960]   digest: '333909459'
+[23:06:48.960] }
+[23:06:48.960] Error: Event handlers cannot be passed to Client Component props.
+[23:06:48.960]   {show: true, onClose: function onClose}
+[23:06:48.960]                         ^^^^^^^^^^^^^^^^
+[23:06:48.960] If you need interactivity, consider converting part of this to a Client Component.
+[23:06:48.960]     at ek (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:140566)
+[23:06:48.960]     at Object.toJSON (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:135755)
+[23:06:48.961]     at stringify (<anonymous>)
+[23:06:48.961]     at eR (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142219)
+[23:06:48.961]     at eE (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142698)
+[23:06:48.961]     at Timeout._onTimeout (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:135475)
+[23:06:48.961]     at listOnTimeout (node:internal/timers:581:17)
+[23:06:48.961]     at process.processTimers (node:internal/timers:519:7) {
+[23:06:48.961]   digest: '333909459'
+[23:06:48.961] }
+[23:07:48.807]  ⚠ Sending SIGTERM signal to static worker due to timeout of 60 seconds. Subsequent errors may be a result of the worker exiting.
+[23:07:48.816]  ⚠ Restarted static page generation for /test because it took more than 60 seconds
+[23:07:49.039] Error: Event handlers cannot be passed to Client Component props.
+[23:07:49.040]   {show: true, onClose: function onClose}
+[23:07:49.040]                         ^^^^^^^^^^^^^^^^
+[23:07:49.040] If you need interactivity, consider converting part of this to a Client Component.
+[23:07:49.040]     at ek (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:140566)
+[23:07:49.041]     at Object.toJSON (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:135755)
+[23:07:49.041]     at stringify (<anonymous>)
+[23:07:49.041]     at eR (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142219)
+[23:07:49.041]     at eE (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142698)
+[23:07:49.041]     at AsyncLocalStorage.run (node:async_hooks:346:14)
+[23:07:49.041]     at Timeout._onTimeout (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:150397)
+[23:07:49.042]     at listOnTimeout (node:internal/timers:581:17)
+[23:07:49.042]     at process.processTimers (node:internal/timers:519:7) {
+[23:07:49.042]   digest: '3940764023'
+[23:07:49.042] }
+[23:07:49.042] Error: Event handlers cannot be passed to Client Component props.
+[23:07:49.042]   {show: true, onClose: function onClose}
+[23:07:49.043]                         ^^^^^^^^^^^^^^^^
+[23:07:49.043] If you need interactivity, consider converting part of this to a Client Component.
+[23:07:49.043]     at ek (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:140566)
+[23:07:49.043]     at Object.toJSON (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:135755)
+[23:07:49.043]     at stringify (<anonymous>)
+[23:07:49.043]     at eR (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142219)
+[23:07:49.044]     at eE (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142698)
+[23:07:49.044]     at Timeout._onTimeout (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:135475)
+[23:07:49.044]     at listOnTimeout (node:internal/timers:581:17)
+[23:07:49.044]     at process.processTimers (node:internal/timers:519:7) {
+[23:07:49.044]   digest: '333909459'
+[23:07:49.044] }
+[23:07:49.045] Error: Event handlers cannot be passed to Client Component props.
+[23:07:49.045]   {show: true, onClose: function onClose}
+[23:07:49.046]                         ^^^^^^^^^^^^^^^^
+[23:07:49.046] If you need interactivity, consider converting part of this to a Client Component.
+[23:07:49.046]     at ek (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:140566)
+[23:07:49.046]     at Object.toJSON (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:135755)
+[23:07:49.046]     at stringify (<anonymous>)
+[23:07:49.046]     at eR (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142219)
+[23:07:49.047]     at eE (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:142698)
+[23:07:49.047]     at Timeout._onTimeout (/vercel/path0/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:135475)
+[23:07:49.047]     at listOnTimeout (node:internal/timers:581:17)
+[23:07:49.047]     at process.processTimers (node:internal/timers:519:7) {
+[23:07:49.047]   digest: '333909459'
+[23:07:49.048] }
+[23:08:48.868]  ⚠ Sending SIGTERM signal to static worker due to timeout of 60 seconds. Subsequent errors may be a result of the worker exiting.
+[23:08:48.880] 
+[23:08:48.881] > Build error occurred
+[23:08:48.883] Error: Static page generation for /test is still timing out after 3 attempts. See more info here https://nextjs.org/docs/messages/static-page-generation-timeout
+[23:08:48.883]     at onRestart (/vercel/path0/node_modules/next/dist/build/index.js:293:27)
+[23:08:48.884]     at /vercel/path0/node_modules/next/dist/lib/worker.js:95:40
+[23:08:48.884]     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[23:08:48.884]     at async /vercel/path0/node_modules/next/dist/export/index.js:450:20
+[23:08:48.884]     at async Span.traceAsyncFn (/vercel/path0/node_modules/next/dist/trace/trace.js:154:20)
+[23:08:48.884]     at async /vercel/path0/node_modules/next/dist/export/index.js:448:24
+[23:08:48.884]     at async Promise.all (index 38)
+[23:08:48.884]     at async exportAppImpl (/vercel/path0/node_modules/next/dist/export/index.js:440:21)
+[23:08:48.884]     at async /vercel/path0/node_modules/next/dist/export/index.js:623:16
+[23:08:48.884]     at async Span.traceAsyncFn (/vercel/path0/node_modules/next/dist/trace/trace.js:154:20)
+[23:08:48.899] error: script "build" exited with code 1
+[23:08:48.907] Error: Command "bun run build" exited with 1
+[23:08:49.297] 

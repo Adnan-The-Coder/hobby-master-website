@@ -2,10 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BiDonateHeart } from 'react-icons/bi';
 import { FiHeart } from 'react-icons/fi';
 import { RiSparklingFill } from 'react-icons/ri';
 
+// Define the props interface
 interface ThankYouAnimationProps {
   show: boolean;
   onClose: () => void;
@@ -14,7 +14,7 @@ interface ThankYouAnimationProps {
 const ThankYouAnimation: React.FC<ThankYouAnimationProps> = ({ show, onClose }) => {
   const [showMessage, setShowMessage] = useState(false);
   const [showText, setShowText] = useState(false);
-  const [confettiCount, setConfettiCount] = useState(50);
+  const [confettiCount] = useState(50);
 
   useEffect(() => {
     if (show) {
@@ -26,7 +26,6 @@ const ThankYouAnimation: React.FC<ThankYouAnimationProps> = ({ show, onClose }) 
         onClose();
       }, 8000);
       
-      // Cleanup timers on unmount or when show changes
       return () => {
         clearTimeout(textTimer);
         clearTimeout(closeTimer);
@@ -40,17 +39,17 @@ const ThankYouAnimation: React.FC<ThankYouAnimationProps> = ({ show, onClose }) 
       key={i}
       className="absolute pointer-events-none"
       initial={{
-        x: Math.random() * 200 - 100, // Reduced spread to stay within viewport
+        x: Math.random() * 200 - 100,
         y: -20,
         scale: 0,
         rotate: 0,
         opacity: 1,
-        left: '50%', // Start from the center
-        transform: 'translateX(-50%)', // Ensure proper centering
+        left: '50%',
+        transform: 'translateX(-50%)',
       }}
       animate={{
-        x: Math.random() * 400 - 200, // Controlled spread
-        y: 600, // Fixed height instead of window height
+        x: Math.random() * 400 - 200,
+        y: 600,
         scale: Math.random() * 0.7 + 0.3,
         rotate: Math.random() * 720 - 360,
         opacity: 0,
@@ -232,8 +231,8 @@ const ThankYouAnimation: React.FC<ThankYouAnimationProps> = ({ show, onClose }) 
                 initial={{
                   opacity: 0,
                   scale: 0,
-                  x: Math.random() * 200 - 100, // Centered with variance
-                  y: Math.random() * 200 - 100, // Centered with variance
+                  x: Math.random() * 200 - 100,
+                  y: Math.random() * 200 - 100,
                 }}
                 animate={{
                   opacity: [0, 1, 0],
