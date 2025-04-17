@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { FaBars, FaTimes, FaGithub, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import { FaBars, FaTimes, FaGithub, FaLinkedin, FaYoutube, FaInstagram } from 'react-icons/fa';
 import { BiDonateHeart } from 'react-icons/bi';
 import { MdCode, MdOutlineLibraryBooks, MdOutlineQuestionAnswer, MdPlayArrow } from 'react-icons/md';
 import Footer from '@/components/Footer';
@@ -235,12 +235,12 @@ const Page: React.FC = () => {
                         scrollToSection('donate');
                         setShowNav(false);
                         }}
-                        className="w-full max-w-md py-5 px-6 rounded-lg text-center text-lg font-medium bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg flex items-center justify-center space-x-3"
+                        className="w-full max-w-md py-5 px-5 rounded-lg text-center text-lg font-medium bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg flex items-center justify-center space-x-3"
                         variants={menuItemVariants}
-                        whileHover={{ scale: 1.05 }}
+                        // whileHover={{ scale: 0.95 }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        <BiDonateHeart className="text-2xl" />
+                        <BiDonateHeart className="text-xl" />
                         <span>Donate</span>
                     </motion.a>
                     </div>
@@ -807,81 +807,115 @@ elif 'the time' in query:
           
           {/* Donate Section */}
           <section id="donate" className="mb-20">
-            <div className="bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-sm p-8 rounded-xl border border-gray-700 shadow-xl">
-              <h2 className="text-3xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500 flex items-center">
-                <BiDonateHeart className="mr-2 text-pink-400" /> Support JARVIS
-              </h2>
-              
-              <p className="text-lg mb-6">
-                JARVIS is a free and open-source project. If you find it useful, please consider supporting its development. Your donations help us improve the assistant and add new features.
-              </p>
-              
-              <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-8">
-                <div className="bg-gray-900 bg-opacity-60 p-6 rounded-lg border border-gray-700 text-center w-full md:w-1/3">
-                  <h3 className="text-xl font-semibold mb-3 text-cyan-300">One-time Donation</h3>
-                  <p className="mb-4">Support the project with a one-time contribution of any amount.</p>
-                  <motion.button 
-                    onClick={() => setShowDonationModal(true)}
-                    className="py-3 px-8 rounded-md bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg flex items-center justify-center space-x-2 mx-auto"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <BiDonateHeart className="text-xl" />
-                    <span>Donate Now</span>
-                  </motion.button>
+            <div className="bg-gray-800/50 backdrop-blur-lg p-8 md:p-12 rounded-2xl border border-gray-700/50 shadow-2xl relative overflow-hidden">
+                {/* Background gradient elements */}
+                <div className="absolute top-0 left-0 w-48 h-48 bg-pink-500/10 rounded-full filter blur-3xl -translate-x-1/2 -translate-y-1/2" />
+                <div className="absolute bottom-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full filter blur-3xl translate-x-1/3 translate-y-1/3" />
+                
+                <div className="relative z-10">
+                <div className="text-center mb-12">
+                    <h2 className="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-pink-500 to-purple-500 flex items-center justify-center">
+                    <BiDonateHeart className="mr-3 text-pink-400 animate-pulse" /> 
+                    Support JARVIS
+                    </h2>
+                    
+                    <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto text-gray-300">
+                    JARVIS is a free and open-source project dedicated to advancing AI assistance. Your donations help us improve features, maintain servers, and continue development.
+                    </p>
                 </div>
                 
-                <div className="bg-gray-900 bg-opacity-60 p-6 rounded-lg border border-gray-700 text-center w-full md:w-1/3">
-                  <h3 className="text-xl font-semibold mb-3 text-cyan-300">GitHub Sponsors</h3>
-                  <p className="mb-4">Become a sponsor and get your name/logo in our README.</p>
-                  <motion.a 
-                    href="https://github.com/sponsors/Adnan-The-Coder" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="py-3 px-8 rounded-md bg-gray-800 text-white font-medium hover:bg-gray-700 transition-all duration-300 shadow-lg flex items-center justify-center space-x-2 mx-auto"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <FaGithub className="text-xl" />
-                    <span>Sponsor</span>
-                  </motion.a>
+                <div className="flex flex-col md:flex-row items-stretch justify-center gap-8 mb-12">
+                    {/* One-time Donation Card */}
+                    <motion.div 
+                    className="bg-gray-900/80 p-8 rounded-2xl border border-pink-500/20 hover:border-pink-500/40 transition-all duration-300 text-center w-full md:w-1/2 lg:w-2/5 relative overflow-hidden group backdrop-blur-sm"
+                    whileHover={{ y: -5 }}
+                    >
+                    <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="relative z-10">
+                        <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <BiDonateHeart className="text-3xl text-white" />
+                        </div>
+                        <h3 className="text-2xl font-bold mb-4 text-white">One-time Donation</h3>
+                        <p className="mb-6 text-gray-300">
+                        Support the project with a one-time contribution. Every donation helps us maintain and improve JARVIS.
+                        </p>
+                        <motion.button 
+                        onClick={() => setShowDonationModal(true)}
+                        className="w-full py-4 px-8 rounded-lg bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg flex items-center justify-center space-x-2"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        >
+                        <BiDonateHeart className="text-xl" />
+                        <span>Donate Now</span>
+                        </motion.button>
+                    </div>
+                    </motion.div>
+                    
+                    {/* Contribute Code Card */}
+                    <motion.div 
+                    className="bg-gray-900/80 p-8 rounded-2xl border border-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 text-center w-full md:w-1/2 lg:w-2/5 relative overflow-hidden group backdrop-blur-sm"
+                    whileHover={{ y: -5 }}
+                    >
+                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="relative z-10">
+                        <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-cyan-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
+                        <MdCode className="text-3xl text-white" />
+                        </div>
+                        <h3 className="text-2xl font-bold mb-4 text-white">Contribute Code</h3>
+                        <p className="mb-6 text-gray-300">
+                        Help improve JARVIS by contributing to the codebase. Join our community of developers.
+                        </p>
+                        <motion.a 
+                        href="https://github.com/Adnan-The-Coder/jarvis-build-v1/issues" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="w-full py-4 px-8 rounded-lg bg-gradient-to-r from-cyan-500 to-indigo-600 text-white font-semibold hover:from-cyan-600 hover:to-indigo-700 transition-all duration-300 shadow-lg flex items-center justify-center space-x-2"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        >
+                        <MdCode className="text-xl" />
+                        <span>Start Contributing</span>
+                        </motion.a>
+                    </div>
+                    </motion.div>
                 </div>
                 
-                <div className="bg-gray-900 bg-opacity-60 p-6 rounded-lg border border-gray-700 text-center w-full md:w-1/3">
-                  <h3 className="text-xl font-semibold mb-3 text-cyan-300">Contribute Code</h3>
-                  <p className="mb-4">Help improve JARVIS by contributing to the codebase.</p>
-                  <motion.a 
-                    href="https://github.com/Adnan-The-Coder/jarvis-build-v1/issues" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="py-3 px-8 rounded-md bg-gray-800 text-white font-medium hover:bg-gray-700 transition-all duration-300 shadow-lg flex items-center justify-center space-x-2 mx-auto"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <MdCode className="text-xl" />
-                    <span>Contribute</span>
-                  </motion.a>
+                {/* Top Supporters Section */}
+                <div className="bg-gray-900/60 p-8 rounded-2xl border border-purple-500/20 backdrop-blur-sm">
+                    <h3 className="text-2xl font-bold mb-6 text-center text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+                    Our Amazing Supporters
+                    </h3>
+                    <p className="text-center mb-8 text-gray-300">
+                    Special thanks to our generous contributors who help make JARVIS possible!
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-4">
+                    {[
+                        { initial: "JD", name: "Junaid" },
+                        { initial: "MK", name: "Mirza khalid" },
+                        { initial: "RB", name: "Ryan Brooks" }
+                    ].map((supporter, index) => (
+                        <motion.div 
+                        key={index}
+                        className="group relative"
+                        whileHover={{ scale: 1.1 }}
+                        >
+                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-purple-500 rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-300" />
+                        <div className="bg-gray-800/80 p-4 rounded-full w-16 h-16 flex items-center justify-center border border-gray-700 relative">
+                            <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
+                            {supporter.initial}
+                            </span>
+                        </div>
+                        <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gray-800/90 text-white px-3 py-1 rounded text-sm mt-2 whitespace-nowrap">
+                            {supporter.name}
+                        </span>
+                        </motion.div>
+                    ))}
+                    <br />
+                    </div>
                 </div>
-              </div>
-              
-              <div className="bg-gray-900 bg-opacity-40 p-6 rounded-lg border border-gray-700 text-center">
-                <h3 className="text-xl font-semibold mb-3 text-cyan-300">Top Supporters</h3>
-                <p className="mb-4">Thank you to our generous supporters who help make JARVIS possible!</p>
-                <div className="flex flex-wrap justify-center gap-4">
-                  {/* This would be populated dynamically in a real app */}
-                  <div className="bg-gray-800 p-3 rounded-full w-16 h-16 flex items-center justify-center">
-                    <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">SA</span>
-                  </div>
-                  <div className="bg-gray-800 p-3 rounded-full w-16 h-16 flex items-center justify-center">
-                    <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">JD</span>
-                  </div>
-                  <div className="bg-gray-800 p-3 rounded-full w-16 h-16 flex items-center justify-center">
-                    <span className="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">MK</span>
-                  </div>
                 </div>
-              </div>
             </div>
-          </section>
+        </section>
           
           {/* Contact Section */}
           <section id="contact" className="mb-20">
@@ -895,7 +929,7 @@ elif 'the time' in query:
                   </p>
                   
                   <div className="space-y-4">
-                    <a href="https://github.com/yourusername/jarvis" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300">
+                    <a href="https://github.com/Adnan-The-Coder/jarvis-build-v1" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-3 text-gray-300 hover:text-cyan-400 transition-colors duration-300">
                       <FaGithub className="text-2xl" />
                       <span>GitHub Repository</span>
                     </a>
@@ -907,7 +941,7 @@ elif 'the time' in query:
                     
                     <div className="flex items-center space-x-3 text-gray-300">
                       <MdOutlineQuestionAnswer className="text-2xl" />
-                      <span>Email: contact@example.com</span>
+                      <span>Email: syedadnanali0106@gmail.com</span>
                     </div>
                   </div>
                 </div>
@@ -933,35 +967,168 @@ elif 'the time' in query:
         
         {/* Footer */}
         <footer className="bg-gray-900 text-gray-400 p-8 border-t border-gray-800">
-          <div className="container mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <div className="mb-6 md:mb-0">
-                <h2 className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mb-2">
-                  JARVIS AI Assistant
-                </h2>
-                <p>A powerful Python-based virtual assistant</p>
-              </div>
-              
-              <div className="flex space-x-4">
-                <a href="https://github.com/yourusername/jarvis" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
-                  <FaGithub className="text-2xl" />
-                </a>
-                <a href="https://www.linkedin.com/in/syedadnanali99" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
-                  <FaLinkedin className="text-2xl" />
-                </a>
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
-                  <FaYoutube className="text-2xl" />
-                </a>
-              </div>
+            <div className="container mx-auto">
+                <div className="flex flex-col lg:flex-row justify-between items-center gap-8">
+                {/* Left section - Logo and Version */}
+                <div className="text-center lg:text-left flex flex-col items-center lg:items-start w-full lg:w-1/3">
+                    <h2 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 mb-4">
+                    JARVIS Assistant
+                    </h2>
+                    
+                    {/* Version Badge */}
+                    <motion.div 
+                    className="inline-flex items-center justify-center mb-3"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
+                    <motion.div 
+                        className="relative inline-flex items-center px-6 py-2 rounded-full bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-pink-500/20 border border-cyan-500/30 backdrop-blur-sm"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                    >
+                        {/* Animated circles in background */}
+                        <motion.div 
+                        className="absolute inset-0 rounded-full bg-cyan-500/10 blur-md"
+                        animate={{ 
+                            scale: [1, 1.2, 1],
+                            opacity: [0.5, 0.3, 0.5]
+                        }}
+                        transition={{ 
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                        />
+                        <motion.div 
+                        className="absolute inset-0 rounded-full bg-purple-500/10 blur-md"
+                        animate={{ 
+                            scale: [1.2, 1, 1.2],
+                            opacity: [0.3, 0.5, 0.3]
+                        }}
+                        transition={{ 
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: 0.5
+                        }}
+                        />
+                        
+                        {/* Version text with animated gradient */}
+                        <motion.span 
+                        className="text-sm font-bold text-cyan-400 mr-3"
+                        animate={{ 
+                            textShadow: [
+                            "0 0 10px #22d3ee, 0 0 20px #22d3ee",
+                            "0 0 20px #a855f7, 0 0 30px #a855f7",
+                            "0 0 10px #ec4899, 0 0 20px #ec4899",
+                            "0 0 10px #22d3ee, 0 0 20px #22d3ee"
+                            ]
+                        }}
+                        transition={{ 
+                            duration: 3,
+                            repeat: Infinity,
+                            ease: "linear"
+                        }}
+                        >
+                        VERSION
+                        </motion.span>
+                        
+                        {/* Animated number */}
+                        <motion.span 
+                        className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500"
+                        animate={{ 
+                            scale: [1, 1.1, 1]
+                        }}
+                        transition={{ 
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                        >
+                        1.0
+                        </motion.span>
+                        
+                        {/* Animated pulse ring */}
+                        <motion.div 
+                        className="absolute inset-0 rounded-full border border-cyan-400/50"
+                        animate={{ 
+                            scale: [1, 1.3, 1],
+                            opacity: [0.5, 0, 0.5]
+                        }}
+                        transition={{ 
+                            duration: 2,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                        />
+                    </motion.div>
+                    </motion.div>
+                    
+                    <p className="text-sm md:text-base font-light text-center lg:text-left">
+                    A powerful Python-based virtual assistant
+                    </p>
+                </div>
+                
+                {/* Center section - Created by (only visible on larger screens) */}
+                <div className="hidden lg:flex flex-col items-center w-1/3">
+                    <p className="text-sm md:text-base font-medium">
+                    Created by{' '}
+                    <a 
+                        href="https://portfolio-v2-c0n.pages.dev/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-cyan-400 hover:text-cyan-300 transition-all duration-300 font-semibold hover:underline hover:underline-offset-4"
+                    >
+                        Syed Adnan Ali
+                    </a>
+                    </p>
+                </div>
+                
+                {/* Right section - Social icons */}
+                <div className="flex items-center justify-center lg:justify-end space-x-6 w-full lg:w-1/3">
+                    <a 
+                    href="https://github.com/yourusername/jarvis" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110"
+                    >
+                    <FaGithub className="text-2xl md:text-3xl" />
+                    </a>
+                    <a 
+                    href="https://www.linkedin.com/in/syedadnanali99" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110"
+                    >
+                    <FaLinkedin className="text-2xl md:text-3xl" />
+                    </a>
+                    <a 
+                    href="https://www.instagram.com/adnan_the_coder/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110"
+                    >
+                    <FaInstagram className="text-2xl md:text-3xl" />
+                    </a>
+                </div>
+                </div>
+                
+                {/* Mobile only - Created by (visible only on smaller screens) */}
+                <div className="mt-8 pt-6 border-t border-gray-800 flex flex-col items-center lg:hidden">
+                <p className="text-sm md:text-base font-medium text-center">
+                    Created by{' '}
+                    <a 
+                    href="https://www.linkedin.com/in/syedadnanali99" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-cyan-400 hover:text-cyan-300 transition-all duration-300 font-semibold hover:underline hover:underline-offset-4"
+                    >
+                    Syed Adnan Ali
+                    </a>
+                </p>
+                </div>
             </div>
-            
-            <div className="mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
-              <p>© 2024 JARVIS AI Assistant. All rights reserved.</p>
-              <p className="mt-4 md:mt-0">
-                Created by <a href="https://www.linkedin.com/in/syedadnanali99" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 transition-colors duration-300">Syed Adnan Ali</a>
-              </p>
-            </div>
-          </div>
         </footer>
       </div>
       <Footer/>
