@@ -5,6 +5,7 @@ import { BiDonateHeart } from 'react-icons/bi';
 import { useRouter } from 'next/navigation';
 import Script from 'next/script';
 import axios from 'axios';
+import ThankYouAnimation from './ThankYouComponent';
 
 interface DonationModalProps {
   isOpen: boolean;
@@ -15,6 +16,7 @@ const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose }) => {
   const [selectedAmount, setSelectedAmount] = useState<number | null>(null);
   const [customAmount, setCustomAmount] = useState<string>('');
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
+  const [showThankYou, setShowThankYou] = useState(false);
   const router = useRouter();
 
   const donationAmounts = [30, 100, 500, 1000];
@@ -68,7 +70,8 @@ const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose }) => {
           
           if (data.isOk) {
             // Payment successful
-            router.push('/Payment-Success');
+            // router.push('/Payment-Success');
+            setShowThankYou(true);
             // Could add email notification here if needed in the future
           } else {
             alert("Payment failed");
@@ -213,6 +216,10 @@ const DonationModal: React.FC<DonationModalProps> = ({ isOpen, onClose }) => {
                     </>
                   )}
                 </motion.button>
+                <ThankYouAnimation
+                    show={showThankYou} 
+                    onClose={() => setShowThankYou(false)} 
+                />
 
                 <div className="mt-6 text-center">
                   <p className="text-gray-400 text-sm">
