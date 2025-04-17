@@ -75,7 +75,7 @@ export default function ProjectsPage() {
     <br />
     <br />
     <div className="container mx-auto py-8 md:py-12 px-4">
-      <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12">Our Projects</h1>
+      <h1 className="text-3xl text-white md:text-4xl font-bold text-center mb-8 md:mb-12">Projects</h1>
       
       {/* Modified grid to have max 3 columns and wider cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
