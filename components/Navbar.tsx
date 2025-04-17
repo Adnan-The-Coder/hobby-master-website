@@ -45,6 +45,9 @@ const Navbar = () => {
               <Link href="/Courses" className={`text-xl ${scrolled ? 'text-black' : 'text-white'} hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium`} >
                 Courses
               </Link>
+              <Link href="/source-code/jarvis-v1" className={`text-xl ${scrolled ? 'text-black' : 'text-white'} hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium`} onClick={() => { toggleMenu();  }}>
+                Source Code
+              </Link>
               <Link href="/Contact" className={`text-xl ${scrolled ? 'text-black' : 'text-white'} hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium`} >
                 Contact
               </Link>
@@ -89,6 +92,9 @@ const Navbar = () => {
           </Link>
           <Link href="/Courses" className={`text-xl ${scrolled ? 'text-black' : 'text-white'} hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium`} onClick={() => { toggleMenu();  }}>
             Courses
+          </Link>
+          <Link href="/source-code/jarvis-v1" className={`text-xl ${scrolled ? 'text-black' : 'text-white'} hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium`} onClick={() => { toggleMenu();  }}>
+            Source Code
           </Link>
           <Link href="/Contact" className={`text-xl ${scrolled ? 'text-black' : 'text-white'} hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium`} onClick={() => { toggleMenu(); }}>
             Contact

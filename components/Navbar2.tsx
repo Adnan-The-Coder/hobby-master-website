@@ -39,13 +39,16 @@ const Navbar2 = () => {
               <Link href="/Blog" className={`text-xl ${scrolled ? 'text-black' : 'text-white'} hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium`} >
                 Blog
               </Link>
-              <Link href="/About" className={`text-xl text-white hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium`} >
+              <Link href="/About" className={`text-xl text-white hover:text-green-600 px-3 py-2 rounded-md font-medium`} >
                 About
               </Link>
-              <Link href="/Courses" className={`text-xl text-white hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium`} >
+              <Link href="/Courses" className={`text-xl text-white hover:text-green-600 px-3 py-2 rounded-md font-medium`} >
                 Courses
               </Link>
-              <Link href="/Contact" className={`text-xl text-white hover:text-green-600 px-3 py-2 rounded-md text-sm font-medium`} >
+              <Link href="/source-code/jarvis-v1" className={`text-xl ${scrolled ? 'text-black' : 'text-white'} hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium`} onClick={() => { toggleMenu();  }}>
+                Source Code
+              </Link>
+              <Link href="/Contact" className={`text-xl text-white hover:text-green-600 px-3 py-2 rounded-md font-medium`} >
                 Contact
               </Link>
               <Link href="/SignUp">
@@ -89,6 +92,9 @@ const Navbar2 = () => {
           </Link>
           <Link href="/Courses" className={`text-xl text-white hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium`} onClick={() => { toggleMenu();  }}>
             Courses
+          </Link>
+          <Link href="/source-code/jarvis-v1" className={`text-xl ${scrolled ? 'text-black' : 'text-white'} hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium`} onClick={() => { toggleMenu();  }}>
+            Source Code
           </Link>
           <Link href="/Contact" className={`text-xl text-white hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium`} onClick={() => { toggleMenu();  }}>
             Contact
