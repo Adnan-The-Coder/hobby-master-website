@@ -42,7 +42,8 @@
     "stripe": "^15.11.0",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
-    "three": "^0.176.0"
+    "three": "^0.176.0",
+    "three-stdlib": "^2.35.16"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

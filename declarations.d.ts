@@ -1,3 +1,4 @@
+// declarations.d.ts
 declare module 'three/examples/jsm/controls/OrbitControls.js' {
     import { Camera, EventDispatcher, MOUSE, Object3D, TOUCH, Vector3 } from 'three';
   
