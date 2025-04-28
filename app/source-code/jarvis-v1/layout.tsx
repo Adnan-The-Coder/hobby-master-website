@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-// import './globals.css';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Script from 'next/script';
@@ -111,7 +110,7 @@ export default function RootLayout({
         </div>
         
         {/* Cookie consent banner */}
-        <div id="cookie-consent" className="fixed bottom-0 left-0 right-0 bg-gray-800 p-4 flex justify-between items-center z-50 hidden">
+        <div id="cookie-consent" className="fixed bottom-0 left-0 right-0 bg-gray-800 p-4 flex justify-between items-center z-50">
           <p className="text-sm text-gray-300">
             We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.
           </p>
