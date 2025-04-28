@@ -1,0 +1,92 @@
+[
+    {
+      "name": "United States",
+      "capital": "Washington, D.C.",
+      "population": 331002651,
+      "area": 9833517,
+      "languages": ["English"],
+      "continent": "North America",
+      "description": "The United States of America is a country primarily located in North America. It consists of 50 states, a federal district, five major unincorporated territories, and various possessions."
+    },
+    {
+      "name": "China",
+      "capital": "Beijing",
+      "population": 1444216107,
+      "area": 9596961,
+      "languages": ["Mandarin"],
+      "continent": "Asia",
+      "description": "China, officially the People's Republic of China, is a country in East Asia. It is the world's most populous country with a population exceeding 1.4 billion."
+    },
+    {
+      "name": "India",
+      "capital": "New Delhi",
+      "population": 1380004385,
+      "area": 3287263,
+      "languages": ["Hindi", "English"],
+      "continent": "Asia",
+      "description": "India is a country in South Asia. It is the second-most populous country, the seventh-largest country by land area, and the most populous democracy in the world."
+    },
+    {
+      "name": "United Kingdom",
+      "capital": "London",
+      "population": 67886011,
+      "area": 242900,
+      "languages": ["English"],
+      "continent": "Europe",
+      "description": "The United Kingdom of Great Britain and Northern Ireland, commonly known as the United Kingdom (UK) or Britain, is a sovereign country in north-western Europe."
+    },
+    {
+      "name": "Japan",
+      "capital": "Tokyo",
+      "population": 126476461,
+      "area": 377975,
+      "languages": ["Japanese"],
+      "continent": "Asia",
+      "description": "Japan is an island country in East Asia located in the northwest Pacific Ocean. It borders the Sea of Japan to the west and extends from the Sea of Okhotsk in the north to the East China Sea in the south."
+    },
+    {
+      "name": "Brazil",
+      "capital": "Brasília",
+      "population": 212559417,
+      "area": 8515767,
+      "languages": ["Portuguese"],
+      "continent": "South America",
+      "description": "Brazil is the largest country in both South America and Latin America. It is the world's fifth-largest country by area and the sixth most populous."
+    },
+    {
+      "name": "Australia",
+      "capital": "Canberra",
+      "population": 25499884,
+      "area": 7692024,
+      "languages": ["English"],
+      "continent": "Oceania",
+      "description": "Australia is a sovereign country comprising the mainland of the Australian continent, the island of Tasmania, and numerous smaller islands. It is the largest country in Oceania and the world's sixth-largest country by total area."
+    },
+    {
+      "name": "Russia",
+      "capital": "Moscow",
+      "population": 145934462,
+      "area": 17098246,
+      "languages": ["Russian"],
+      "continent": "Europe/Asia",
+      "description": "Russia, or the Russian Federation, is a transcontinental country spanning Eastern Europe and Northern Asia. It is the largest country in the world by area, covering over 17 million square kilometers."
+    },
+    {
+      "name": "Germany",
+      "capital": "Berlin",
+      "population": 83783942,
+      "area": 357114,
+      "languages": ["German"],
+      "continent": "Europe",
+      "description": "Germany is a country in Central Europe. It is the second-most populous country in Europe after Russia, and the most populous member state of the European Union."
+    },
+    {
+      "name": "South Africa",
+      "capital": "Pretoria (administrative), Cape Town (legislative), Bloemfontein (judicial)",
+      "population": 59308690,
+      "area": 1221037,
+      "languages": ["Zulu", "Xhosa", "Afrikaans", "English", "Sepedi", "Setswana", "Sesotho", "Xitsonga", "siSwati", "Tshivenda", "isiNdebele"],
+      "continent": "Africa",
+      "description": "South Africa is the southernmost country in Africa. It has a coastline that stretches more than 2,500 km and along two oceans (the Atlantic and the Indian)."
+    }
+  ]

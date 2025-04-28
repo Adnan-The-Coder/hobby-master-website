@@ -160,7 +160,7 @@ function Navbar() {
                 JARVIS ASSISTANT
               </span>
               <span className="text-xs md:text-sm font-medium text-blue-300">
-                MARK II • SYSTEM ONLINE
+                Version 2
               </span>
             </div>
           </motion.div>
