@@ -66,219 +66,230 @@ const Globe: React.FC = () => {
 
   // Initialize Three.js scene
   useEffect(() => {
-    if (!containerRef.current) return;
-
-    // Create scene
-    const scene = new THREE.Scene();
-    sceneRef.current = scene;
-    
-    // Add ambient light
-    const ambientLight = new THREE.AmbientLight(0x404040, 2);
-    scene.add(ambientLight);
-
-    // Add directional light (sunlight)
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(5, 3, 5);
-    scene.add(directionalLight);
-
-    // Add point lights for highlights
-    const blueLight = new THREE.PointLight(0x0077ff, 1, 50);
-    blueLight.position.set(-15, 5, 15);
-    scene.add(blueLight);
-
-    const purpleLight = new THREE.PointLight(0x9900ff, 1, 50);
-    purpleLight.position.set(15, -5, -15);
-    scene.add(purpleLight);
-
-    // Create camera
-    const camera = new THREE.PerspectiveCamera(
-      45, 
-      containerRef.current.clientWidth / containerRef.current.clientHeight, 
-      0.1, 
-      1000
-    );
-    camera.position.z = 5;
-    cameraRef.current = camera;
-
-    // Create renderer with antialiasing and better shadows
-    const renderer = new THREE.WebGLRenderer({ 
-      antialias: true,
-      alpha: true,
-    });
-    renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-    (renderer as any).outputEncoding = THREE.sRGBEncoding;
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.2;
-    containerRef.current.appendChild(renderer.domElement);
-    rendererRef.current = renderer;
-
-    // Add orbit controls
-    const controls = new OrbitControls(camera, renderer.domElement);
-    controls.enableDamping = true;
-    controls.dampingFactor = 0.05;
-    controls.enableZoom = true;
-    controls.minDistance = 3;
-    controls.maxDistance = 10;
-    controls.autoRotate = true;
-    controls.autoRotateSpeed = 0.5;
-    controlsRef.current = controls;
-
-    // Create Earth with realistic textures
-    const earthGroup = new THREE.Group();
-    globeRef.current = earthGroup;
-    scene.add(earthGroup);
-
-    // Load Earth textures
-    const textureLoader = new THREE.TextureLoader();
-    
-    // Track loading progress
-    let totalTextures = Object.keys(textureUrls).length;
-    let loadedTextures = 0;
-    
-    const updateProgress = () => {
-      loadedTextures++;
-      setLoadingProgress((loadedTextures / totalTextures) * 100);
-      if (loadedTextures === totalTextures) {
-        setTimeout(() => setIsLoading(false), 500);
-      }
-    };
-
-    // Earth sphere with detailed textures
-    textureLoader.load(textureUrls.earthMap, (texture) => {
-      const earthGeometry = new THREE.SphereGeometry(2, 64, 64);
-      const earthMaterial = new THREE.MeshPhongMaterial({
-        map: texture,
-        bumpMap: null,
-        bumpScale: 0.05,
-        specularMap: null,
-        specular: new THREE.Color(0x333333),
-        shininess: 15,
-      });
-      
-      const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
-      earthMesh.castShadow = true;
-      earthMesh.receiveShadow = true;
-      earthGroup.add(earthMesh);
-      
-      updateProgress();
-      
-      // Load bump map (terrain)
-      textureLoader.load(textureUrls.earthBumpMap, (bumpMap) => {
-        earthMaterial.bumpMap = bumpMap;
-        updateProgress();
-      });
-      
-      // Load specular map (water reflections)
-      textureLoader.load(textureUrls.earthSpecularMap, (specMap) => {
-        earthMaterial.specularMap = specMap;
-        updateProgress();
-      });
-
-      // Load night lights map
-      textureLoader.load(textureUrls.earthNightMap, (nightMap) => {
-        // We're not using this directly on the main material, but it's loaded for progress tracking
-        updateProgress();
-      });
-    });
-
-    // Add clouds layer
-    textureLoader.load(textureUrls.earthClouds, (cloudsTexture) => {
-      const cloudsGeometry = new THREE.SphereGeometry(2.05, 64, 64);
-      const cloudsMaterial = new THREE.MeshPhongMaterial({
-        map: cloudsTexture,
-        transparent: true,
-        opacity: 0.4,
-      });
-      
-      const cloudsMesh = new THREE.Mesh(cloudsGeometry, cloudsMaterial);
-      earthGroup.add(cloudsMesh);
-      
-      updateProgress();
-    });
-
-    // Add atmosphere glow
-    const atmosphereGeometry = new THREE.SphereGeometry(2.1, 64, 64);
-    const atmosphereMaterial = new THREE.MeshPhongMaterial({
-      color: 0x0077ff,
-      transparent: true,
-      opacity: 0.2,
-      side: THREE.BackSide,
-    });
-    
-    const atmosphereMesh = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
-    earthGroup.add(atmosphereMesh);
-
-    // Add stars background
-    const starsGeometry = new THREE.BufferGeometry();
-    const starsCount = 2000;
-    const starsPositions = new Float32Array(starsCount * 3);
-    
-    for (let i = 0; i < starsCount * 3; i += 3) {
-      starsPositions[i] = (Math.random() - 0.5) * 100;
-      starsPositions[i + 1] = (Math.random() - 0.5) * 100;
-      starsPositions[i + 2] = (Math.random() - 0.5) * 100;
+    if (!containerRef.current) {
+      console.error("Container ref is null");
+      return;
     }
-    
-    starsGeometry.setAttribute('position', new THREE.BufferAttribute(starsPositions, 3));
-    
-    const starsMaterial = new THREE.PointsMaterial({
-      color: 0xffffff,
-      size: 0.1,
-      transparent: true,
-    });
-    
-    const stars = new THREE.Points(starsGeometry, starsMaterial);
-    scene.add(stars);
 
-    // Animation loop
-    const animate = () => {
-      requestAnimationFrame(animate);
+    try {
+      // Create scene
+      const scene = new THREE.Scene();
+      sceneRef.current = scene;
       
-      if (controlsRef.current) {
-        controlsRef.current.update();
-      }
-      
-      if (globeRef.current && isRotating && !isHovering) {
-        globeRef.current.rotation.y += 0.001;
-      }
-      
-      if (rendererRef.current && sceneRef.current && cameraRef.current) {
-        rendererRef.current.render(sceneRef.current, cameraRef.current);
-      }
-    };
-    
-    animate();
+      // Add ambient light
+      const ambientLight = new THREE.AmbientLight(0x404040, 2);
+      scene.add(ambientLight);
 
-    // Handle window resize
-    const handleResize = () => {
-      if (!containerRef.current || !cameraRef.current || !rendererRef.current) return;
-      
-      cameraRef.current.aspect = containerRef.current.clientWidth / containerRef.current.clientHeight;
-      cameraRef.current.updateProjectionMatrix();
-      rendererRef.current.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
-    };
-    
-    window.addEventListener('resize', handleResize);
+      // Add directional light (sunlight)
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+      directionalLight.position.set(5, 3, 5);
+      scene.add(directionalLight);
 
-    // Cleanup
-    return () => {
-      window.removeEventListener('resize', handleResize);
+      // Add point lights for highlights
+      const blueLight = new THREE.PointLight(0x0077ff, 1, 50);
+      blueLight.position.set(-15, 5, 15);
+      scene.add(blueLight);
+
+      const purpleLight = new THREE.PointLight(0x9900ff, 1, 50);
+      purpleLight.position.set(15, -5, -15);
+      scene.add(purpleLight);
+
+      // Create camera
+      const camera = new THREE.PerspectiveCamera(
+        45, 
+        containerRef.current.clientWidth / containerRef.current.clientHeight, 
+        0.1, 
+        1000
+      );
+      camera.position.z = 5;
+      cameraRef.current = camera;
+
+      // Create renderer with antialiasing and better shadows
+      const renderer = new THREE.WebGLRenderer({ 
+        antialias: true,
+        alpha: true,
+      });
+      renderer.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap;
       
-      if (rendererRef.current && containerRef.current) {
-        containerRef.current.removeChild(rendererRef.current.domElement);
+      // Fix for sRGBEncoding property
+      renderer.outputColorSpace = THREE.SRGBColorSpace;
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.2;
+      
+      containerRef.current.appendChild(renderer.domElement);
+      rendererRef.current = renderer;
+
+      // Add orbit controls
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.05;
+      controls.enableZoom = true;
+      controls.minDistance = 3;
+      controls.maxDistance = 10;
+      controls.autoRotate = true;
+      controls.autoRotateSpeed = 0.5;
+      controlsRef.current = controls;
+
+      // Create Earth with realistic textures
+      const earthGroup = new THREE.Group();
+      globeRef.current = earthGroup;
+      scene.add(earthGroup);
+
+      // Load Earth textures
+      const textureLoader = new THREE.TextureLoader();
+      
+      // Track loading progress
+      let totalTextures = Object.keys(textureUrls).length;
+      let loadedTextures = 0;
+      
+      const updateProgress = () => {
+        loadedTextures++;
+        setLoadingProgress((loadedTextures / totalTextures) * 100);
+        if (loadedTextures === totalTextures) {
+          setTimeout(() => setIsLoading(false), 500);
+        }
+      };
+
+      // Earth sphere with detailed textures
+      textureLoader.load(textureUrls.earthMap, (texture) => {
+        const earthGeometry = new THREE.SphereGeometry(2, 64, 64);
+        const earthMaterial = new THREE.MeshPhongMaterial({
+          map: texture,
+          bumpMap: null,
+          bumpScale: 0.05,
+          specularMap: null,
+          specular: new THREE.Color(0x333333),
+          shininess: 15,
+        });
+        
+        const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
+        earthMesh.castShadow = true;
+        earthMesh.receiveShadow = true;
+        earthGroup.add(earthMesh);
+        
+        updateProgress();
+        
+        // Load bump map (terrain)
+        textureLoader.load(textureUrls.earthBumpMap, (bumpMap) => {
+          earthMaterial.bumpMap = bumpMap;
+          updateProgress();
+        });
+        
+        // Load specular map (water reflections)
+        textureLoader.load(textureUrls.earthSpecularMap, (specMap) => {
+          earthMaterial.specularMap = specMap;
+          updateProgress();
+        });
+
+        // Load night lights map
+        textureLoader.load(textureUrls.earthNightMap, (nightMap) => {
+          // We're not using this directly on the main material, but it's loaded for progress tracking
+          updateProgress();
+        });
+      });
+
+      // Add clouds layer
+      textureLoader.load(textureUrls.earthClouds, (cloudsTexture) => {
+        const cloudsGeometry = new THREE.SphereGeometry(2.05, 64, 64);
+        const cloudsMaterial = new THREE.MeshPhongMaterial({
+          map: cloudsTexture,
+          transparent: true,
+          opacity: 0.4,
+        });
+        
+        const cloudsMesh = new THREE.Mesh(cloudsGeometry, cloudsMaterial);
+        earthGroup.add(cloudsMesh);
+        
+        updateProgress();
+      });
+
+      // Add atmosphere glow
+      const atmosphereGeometry = new THREE.SphereGeometry(2.1, 64, 64);
+      const atmosphereMaterial = new THREE.MeshPhongMaterial({
+        color: 0x0077ff,
+        transparent: true,
+        opacity: 0.2,
+        side: THREE.BackSide,
+      });
+      
+      const atmosphereMesh = new THREE.Mesh(atmosphereGeometry, atmosphereMaterial);
+      earthGroup.add(atmosphereMesh);
+
+      // Add stars background
+      const starsGeometry = new THREE.BufferGeometry();
+      const starsCount = 2000;
+      const starsPositions = new Float32Array(starsCount * 3);
+      
+      for (let i = 0; i < starsCount * 3; i += 3) {
+        starsPositions[i] = (Math.random() - 0.5) * 100;
+        starsPositions[i + 1] = (Math.random() - 0.5) * 100;
+        starsPositions[i + 2] = (Math.random() - 0.5) * 100;
       }
       
-      if (globeRef.current) {
-        scene.remove(globeRef.current);
-      }
+      starsGeometry.setAttribute('position', new THREE.BufferAttribute(starsPositions, 3));
       
-      if (rendererRef.current) {
-        rendererRef.current.dispose();
-      }
-    };
+      const starsMaterial = new THREE.PointsMaterial({
+        color: 0xffffff,
+        size: 0.1,
+        transparent: true,
+      });
+      
+      const stars = new THREE.Points(starsGeometry, starsMaterial);
+      scene.add(stars);
+
+      // Animation loop
+      const animate = () => {
+        requestAnimationFrame(animate);
+        
+        if (controlsRef.current) {
+          controlsRef.current.update();
+        }
+        
+        if (globeRef.current && isRotating && !isHovering) {
+          globeRef.current.rotation.y += 0.001;
+        }
+        
+        if (rendererRef.current && sceneRef.current && cameraRef.current) {
+          rendererRef.current.render(sceneRef.current, cameraRef.current);
+        }
+      };
+      
+      animate();
+
+      // Handle window resize
+      const handleResize = () => {
+        if (!containerRef.current || !cameraRef.current || !rendererRef.current) return;
+        
+        cameraRef.current.aspect = containerRef.current.clientWidth / containerRef.current.clientHeight;
+        cameraRef.current.updateProjectionMatrix();
+        rendererRef.current.setSize(containerRef.current.clientWidth, containerRef.current.clientHeight);
+      };
+      
+      window.addEventListener('resize', handleResize);
+
+      // Cleanup
+      return () => {
+        console.log("Cleaning up Globe component");
+        window.removeEventListener('resize', handleResize);
+        
+        if (rendererRef.current && containerRef.current) {
+          containerRef.current.removeChild(rendererRef.current.domElement);
+        }
+        
+        if (globeRef.current && sceneRef.current) {
+          sceneRef.current.remove(globeRef.current);
+        }
+        
+        if (rendererRef.current) {
+          rendererRef.current.dispose();
+        }
+      };
+    } catch (error) {
+      console.error("Error initializing Three.js scene:", error);
+    }
   }, []);
 
   // Handle mouse interactions
@@ -388,7 +399,7 @@ const Globe: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[600px] md:h-[800px] overflow-hidden bg-black/50 rounded-xl">
+    <div className="relative w-full h-full min-h-[400px] overflow-hidden bg-black/50 rounded-xl">
       {/* Loading overlay */}
       {isLoading && (
         <div className="absolute inset-0 bg-black/80 z-50 flex flex-col items-center justify-center">
@@ -579,22 +590,22 @@ const Globe: React.FC = () => {
       {/* Globe Container */}
       <div 
         ref={containerRef} 
-        className="w-full h-full cursor-grab active:cursor-grabbing"
-        />
-        
-        {/* Interaction Hint */}
-        {!isHovering && !showInfo && !isLoading && (
-          <motion.div 
-            className="absolute bottom-16 left-1/2 transform -translate-x-1/2 text-blue-300 text-sm bg-blue-900/30 backdrop-blur-sm px-4 py-2 rounded-full border border-blue-500/30"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2, duration: 0.5 }}
-          >
-            Hover to interact with the globe. Click on locations for details.
-          </motion.div>
-        )}
-      </div>
-    );
-  };
-  
-  export default Globe;
+        className="w-full h-full min-h-[400px] cursor-grab active:cursor-grabbing"
+      />
+      
+      {/* Interaction Hint */}
+      {!isHovering && !showInfo && !isLoading && (
+        <motion.div 
+          className="absolute bottom-16 left-1/2 transform -translate-x-1/2 text-blue-300 text-sm bg-blue-900/30 backdrop-blur-sm px-4 py-2 rounded-full border border-blue-500/30"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 2, duration: 0.5 }}
+        >
+          Hover to interact with the globe. Click on locations for details.
+        </motion.div>
+      )}
+    </div>
+  );
+};
+
+export default Globe;
