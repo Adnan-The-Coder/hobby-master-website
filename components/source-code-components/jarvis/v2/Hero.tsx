@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useAnimation, useMotionValue, useTransform } from 'framer-motion';
+import Globe from '@/components/source-code-components/jarvis/v2/Globe';
 
 const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -179,7 +180,8 @@ const Hero = () => {
       </motion.div>
       
       {/* Globe in Center */}
-      
+            <Globe/>
+            
       {/* Header */}
       <motion.div
         className="absolute top-4 left-1/2 transform -translate-x-1/2 text-center"
